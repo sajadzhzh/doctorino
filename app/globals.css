@@ -2,11 +2,13 @@
 
 :root {
   --primary: #1677D2;
+  --primary-hover: #11599c;
   --primary-dark: #102A56;
   --primary-light: #EAF3FF;
 
   --background: #F7F9FE;
   --surface: #FFFFFF;
+  --surface-hover: #fafafa;
 
   --foreground: #172554;
   --muted: #64748B;

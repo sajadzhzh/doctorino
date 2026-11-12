@@ -6,6 +6,8 @@ header {
   padding-inline: calc(var(--spacing) * 5);
   justify-content: space-between;
   display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--primary-light);
 
   @media (width >= 1024px) {
     padding-inline: calc(var(--spacing) * 15);

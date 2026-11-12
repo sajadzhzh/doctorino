@@ -4,6 +4,7 @@ import logo from "@/public/logo.png";
 import "./header.css";
 import { SlMenu } from "react-icons/sl";
 import HeaderItems from "./Items";
+import Button from "@/Components/Button/Button";
 
 export default function Header() {
   return (
@@ -11,12 +12,18 @@ export default function Header() {
       <Link href={"/"}>
         <Image src={logo} width={500} height={500} alt="Doctorino" />
       </Link>
+      
+      <div className="hidden w-max lg:flex items-center gap-10">
+        <HeaderItems />
+      </div>
 
-      <HeaderItems />
+      <Button theme="primary" className="hidden lg:block h-max my-auto">
+        ورود / ثبت‌نام
+      </Button>
 
-      <button className="block lg:hidden">
+      <Button theme="glass" className="block lg:hidden h-max my-auto">
         <SlMenu />
-      </button>
+      </Button>
     </header>
   );
 }
