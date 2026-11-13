@@ -22,7 +22,7 @@ export default function Button({
   onClick,
 }: {
   children: ReactNode;
-  className: string;
+  className?: string;
   type?: "submit" | "reset" | "button";
   theme: Colors;
   onClick?: MouseEventHandler<HTMLButtonElement>;

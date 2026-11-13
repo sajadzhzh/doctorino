@@ -18,3 +18,10 @@ header {
     padding-block: calc(var(--spacing) * 1.5);
   }
 }
+
+.header-item{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
