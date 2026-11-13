@@ -1,25 +1,63 @@
-import { Dispatch, SetStateAction } from "react";
-import "./menu.css";
-import Button from "@/Components/Button/Button";
-import { IoClose } from "react-icons/io5";
+"use client";
 
-export default function Menu({
-  isOpen,
-  setOpen,
-}: {
-  isOpen: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+import Button from "@/Components/Button/Button";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { IoMenu } from "react-icons/io5";
+import "./menu.css";
+import HeaderItems from "../Header/Items";
+
+export default function Menu() {
+  const Ref = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (Ref.current && !Ref.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+
+      if (Ref.current?.contains(event.target as Node)) {
+        setTimeout(() => {
+          setOpen(false);
+        }, 250);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
   return (
-    <menu className={isOpen ? "menu-container" : "hidden"}>
-      <section className="menu">
-        <div className="py-2 w-full flex justify-between items-center border-b border-(--border)">
-          <h2 className="text-xl font-bold">دکترینو</h2>
-          <Button theme="glass" onClick={() => setOpen(false)}>
-            <IoClose size={20} />
-          </Button>
+    <>
+      <Button theme="glass" className="lg:hidden h-max my-auto" onClick={() => setOpen(true)}>
+        <IoMenu size={24} />
+      </Button>
+
+      <div
+        className={
+          open
+            ? "absolute show right-0 top-0 w-full h-svh bg-gray-600/50 z-999"
+            : "absolute right-0 top-0 w-full h-svh bg-gray-600/50 z-999 hidden hide"
+        }
+      >
+        <div
+          className={`menu ${open ? "translate-x-0 slideLeft" : "translate-x-full slideRight"}`}
+          ref={Ref}
+        >
+          <div className="flex flex-col gap-5">
+            <Link href={"/"} className="w-full border-b border-(--border) py-4">
+              <h1 className="text-[20px] font-bold text-center">
+                دکترینو
+              </h1>
+            </Link>
+
+            <HeaderItems />
+          </div>
         </div>
-      </section>
-    </menu>
+      </div>
+    </>
   );
 }

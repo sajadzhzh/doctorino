@@ -1,22 +1,63 @@
-.menu-container {
-  position: absolute;
-  width: 100%;
+.menu {
+  background: var(--primary-light);
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 5);
   height: 100svh;
-  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
-  top: 0;
-  right: 0;
-  background: var(--backdrop);
-  z-index: 999;
+  padding-block: calc(var(--spacing) * 1);
+  padding-inline: calc(var(--spacing) * 2);
+  border-radius: calc(var(--spacing)* 5);
+}
 
-  .menu {
-    top: 0;
-    right: 0;
-    width: 70%;
-    height: 100svh;
-    position: absolute;
-    padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
-    background: var(--primary-light);
-    border: 1px solid var(--border);
-    border-radius: calc(var(--spacing)* 5);
+.show {
+  animation: show 0.5s;
+}
+.hide {
+  animation: hide 0.5s;
+}
+.slideLeft {
+  animation: slideLeft 0.5s;
+}
+.slideRight {
+  animation: slideRight 0.5s;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes show {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes hide {
+  from {
+    display: block;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
   }
 }
