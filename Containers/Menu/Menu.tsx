@@ -32,7 +32,11 @@ export default function Menu() {
   }, [open]);
   return (
     <>
-      <Button theme="glass" className="lg:hidden h-max my-auto" onClick={() => setOpen(true)}>
+      <Button
+        theme="glass"
+        className="lg:hidden h-max my-auto"
+        onClick={() => setOpen(true)}
+      >
         <IoMenu size={24} />
       </Button>
 
@@ -47,14 +51,16 @@ export default function Menu() {
           className={`menu ${open ? "translate-x-0 slideLeft" : "translate-x-full slideRight"}`}
           ref={Ref}
         >
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 h-full">
             <Link href={"/"} className="w-full border-b border-(--border) py-4">
-              <h1 className="text-[20px] font-bold text-center">
-                دکترینو
-              </h1>
+              <h1 className="text-[20px] font-bold text-center">دکترینو</h1>
             </Link>
 
             <HeaderItems />
+
+            <Button theme="primary" className="mt-auto mb-5 h-max">
+              ورود / ثبت‌نام
+            </Button>
           </div>
         </div>
       </div>

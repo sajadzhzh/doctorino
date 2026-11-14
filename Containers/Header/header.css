@@ -20,8 +20,12 @@ header {
 }
 
 .header-item{
-  height: 100%;
+  height: max-content;
   display: flex;
   flex-direction: column;
   justify-items: center;
+
+  @media (width >= 1024px) {
+    height: 100%;
+  }
 }
